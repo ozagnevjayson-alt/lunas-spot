@@ -3,134 +3,547 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luna's Spot - Milk Tea & Fruity Soda</title>
+    <title>Luna's Spot - Premium Milk Tea & Fruity Soda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #fff8f0;
+        :root {
+            --primary: #8B4513;
+            --secondary: #FFD700;
+            --light: #fff8f0;
+            --dark: #5D2906;
+            --accent: #FF6B6B;
+            --text: #333333;
+            --transparent-bg: rgba(255, 248, 240, 0.85);
+        }
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.6;
             position: relative;
             min-height: 100vh;
         }
-        /* Add background logo styling */
+        
+        /* Background logo styling */
         .bg-logo {
             position: fixed;
-            top: 50;
+            top: 50%;
             left: 50%;
-            width: 400px;
-            height: 400px;
+            width: 600px;
+            height: 600px;
             transform: translate(-50%, -50%);
-            opacity: 0.07;
+            opacity: 0.15;
             z-index: 0;
             pointer-events: none;
             background: url('/images/logo.jpg') no-repeat center center;
             background-size: contain;
+            filter: sepia(0.5);
         }
+        
         header, nav, main, footer {
             position: relative;
             z-index: 1;
         }
+        
         header {
-            background: #8B4513;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
             color: #fff;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        nav {
-            background: #8B4513;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav a {
-            color: yellow;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-        }
-        main {
-            max-width: 700px;
-            margin: 2rem auto;
-            background: #fff;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        h2 {
-            color: #ffffff;
-        }
-        .menu {
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
             gap: 1.5rem;
         }
+        
+        .logo-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 5px solid var(--secondary);
+            overflow: hidden;
+        }
+        
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .header-text {
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .header-text h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-text p {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+        
+        nav {
+            background: var(--primary);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-logo img {
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .nav-logo span {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            background: var(--transparent-bg);
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+            display: inline-block;
+        }
+        
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
         .menu-item {
-            flex: 1 1 200px;
-            background: #8B4513;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary);
         }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
         .menu-item h3 {
-            margin-top: 0;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+        
+        .menu-item h3 i {
+            color: var(--accent);
+        }
+        
+        .price {
+            color: var(--dark);
+            font-weight: bold;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 30px;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .hours {
+            margin-top: 1.5rem;
+        }
+        
+        .hours ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+        
+        .hours li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3rem 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
         footer {
-            text-align: center;
-            padding: 1rem;
-            background: #8B4513;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
             color: #fff;
-            margin-top: 2rem;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .menu {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Background logo -->
     <div class="bg-logo"></div>
+    
     <header>
-        <h1>Luna's Spot</h1>
-        <p>Milk Tea & Fruity Soda</p>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="/images/logo.jpg" alt="Luna's Spot Logo">
+            </div>
+            <div class="header-text">
+                <h1>Luna's Spot</h1>
+                <p>Premium Milk Tea & Refreshing Fruity Soda</p>
+            </div>
+        </div>
     </header>
+    
     <nav>
-        <img src="/images/logo.jpg" alt="Luna's Spot Logo" style="height:50px; vertical-align:middle; border-radius:50%;">
-        <a href="#menu">Menu</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="/images/logo.jpg" alt="Luna's Spot Logo">
+                <span>Luna's Spot</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#menu"><i class="fas fa-mug-hot"></i> Menu</a>
+                <a href="#about"><i class="fas fa-store"></i> About</a>
+                <a href="#contact"><i class="fas fa-phone"></i> Contact</a>
+                <a href="#location"><i class="fas fa-map-marker-alt"></i> Location</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
     </nav>
+    
     <main>
         <section id="menu">
             <h2>Our Menu</h2>
             <div class="menu">
                 <div class="menu-item">
-                    <h3>Classic Milk Tea</h3>
+                    <h3><i class="fas fa-coffee"></i> Classic Milk Tea</h3>
                     <p>Rich black tea with creamy milk and chewy tapioca pearls.</p>
+                    <div class="price">₱120</div>
                 </div>
                 <div class="menu-item">
-                    <h3>Brown Sugar Milk Tea</h3>
+                    <h3><i class="fas fa-candy-cane"></i> Brown Sugar Milk Tea</h3>
                     <p>Sweet brown sugar syrup with fresh milk and boba.</p>
+                    <div class="price">₱140</div>
                 </div>
                 <div class="menu-item">
-                    <h3>Strawberry Fruity Soda</h3>
+                    <h3><i class="fas fa-stroopwafel"></i> Taro Milk Tea</h3>
+                    <p>Creamy taro flavor with milk and chewy tapioca pearls.</p>
+                    <div class="price">₱130</div>
+                </div>
+                <div class="menu-item">
+                    <h3><i class="fas fa-stroopwafel"></i> Matcha Milk Tea</h3>
+                    <p>Premium matcha green tea with milk and boba pearls.</p>
+                    <div class="price">₱150</div>
+                </div>
+                <div class="menu-item">
+                    <h3><i class="fas fa-glass-cheers"></i> Strawberry Fruity Soda</h3>
                     <p>Refreshing soda with real strawberry bits and a burst of flavor.</p>
+                    <div class="price">₱110</div>
                 </div>
                 <div class="menu-item">
-                    <h3>Mango Fruity Soda</h3>
+                    <h3><i class="fas fa-glass-cheers"></i> Mango Fruity Soda</h3>
                     <p>Fizzy mango soda with tropical sweetness.</p>
+                    <div class="price">₱110</div>
+                </div>
+                <div class="menu-item">
+                    <h3><i class="fas fa-glass-cheers"></i> Lychee Fruity Soda</h3>
+                    <p>Sweet lychee flavor with sparkling soda and fruit bits.</p>
+                    <div class="price">₱110</div>
+                </div>
+                <div class="menu-item">
+                    <h3><i class="fas fa-glass-cheers"></i> Blueberry Fruity Soda</h3>
+                    <p>Tangy blueberry soda with real fruit pieces.</p>
+                    <div class="price">₱110</div>
                 </div>
             </div>
         </section>
+        
         <section id="about">
             <h2>About Us</h2>
-            <p>Luna's Spot is your cozy neighborhood shop for delicious milk tea and fruity sodas. We use only the freshest ingredients to bring you the best drinks in town!</p>
+            <div class="about-content">
+                <p>Welcome to Luna's Spot, your cozy neighborhood shop for delicious milk tea and fruity sodas! Founded in 2020, we've been dedicated to serving the community with high-quality beverages made from the freshest ingredients.</p>
+                
+                <p>Our mission is simple: to create memorable drink experiences that bring people together. Whether you're catching up with friends, studying, or just taking a break, Luna's Spot is the perfect place to relax and enjoy a refreshing beverage.</p>
+                
+                <div class="about-image">
+                    <p>Our Cozy Shop Interior</p>
+                </div>
+                
+                <p>All our drinks are crafted with care, using premium tea leaves, real fruit, and high-quality ingredients. We never use artificial flavors or preservatives, ensuring every sip is as natural and delicious as possible.</p>
+            </div>
         </section>
+        
         <section id="contact">
-            <h2>Contact</h2>
-            <p>Phone: 09192326156</p>
-            <p>Email: ozagnevjayson@gmail.com/p>
-            <p>Location: 34 barangay bugayong binalonan pangasinan</p>
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong><br>
+                            09192326156
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            ozagnevjayson@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong><br>
+                            34 Barangay Bugayong, Binalonan, Pangasinan
+                        </div>
+                    </div>
+                    
+                    <div class="hours">
+                        <h3>Opening Hours</h3>
+                        <ul>
+                            <li><span>Monday - Friday</span> <span>9:00 AM - 9:00 PM</span></li>
+                            <li><span>Saturday</span> <span>10:00 AM - 10:00 PM</span></li>
+                            <li><span>Sunday</span> <span>10:00 AM - 8:00 PM</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Find Us</h3>
+                    <div class="map-placeholder">
+                        <p>Map of Our Location</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+    
     <footer>
-        &copy; 2025 Luna's Spot. All rights reserved.
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2025 Luna's Spot. All rights reserved.</p>
+            <p>Crafted with ❤️ for the community</p>
+        </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
