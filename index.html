@@ -10,20 +10,40 @@
             background: #fff8f0;
             margin: 0;
             padding: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+        /* Add background logo styling */
+        .bg-logo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            transform: translate(-50%, -50%);
+            opacity: 0.07;
+            z-index: 0;
+            pointer-events: none;
+            background: url('/images/logo.jpg') no-repeat center center;
+            background-size: contain;
+        }
+        header, nav, main, footer {
+            position: relative;
+            z-index: 1;
         }
         header {
-            background: #ffb6b9;
+            background: #8B4513;
             color: #fff;
             padding: 2rem 1rem;
             text-align: center;
         }
         nav {
-            background: #ffe0e6;
+            background: #8B4513;
             padding: 1rem;
             text-align: center;
         }
         nav a {
-            color: #d72660;
+            color: #yellow;
             text-decoration: none;
             margin: 0 1rem;
             font-weight: bold;
@@ -64,11 +84,14 @@
     </style>
 </head>
 <body>
+    <!-- Background logo -->
+    <div class="bg-logo"></div>
     <header>
         <h1>Luna's Spot</h1>
         <p>Milk Tea & Fruity Soda</p>
     </header>
     <nav>
+        <img src="/images/logo.jpg" alt="Luna's Spot Logo" style="height:50px; vertical-align:middle; border-radius:50%;">
         <a href="#menu">Menu</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
